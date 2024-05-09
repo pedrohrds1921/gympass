@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  pgGympass:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=pgGympass
+    volumes:
+      - appDB:/data/appDB
+    restart: always
+
+volumes:
+  appDB:
