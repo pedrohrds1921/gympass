@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  db:
+  pgsql:
     image: bitnami/postgresql
     container_name: pgsql
     ports:
@@ -20,12 +20,9 @@ services:
     container_name: api
     networks:
       - api_network
-    environment:
-      - DATABASE_URL=postgres://dbpg:docker@pgsql:5432/pgGympass
-      - NODE_ENV=prod
+      - db_network
     depends_on:
-      - db
-
+      - pgsql
 networks:
   api_network:
     driver: bridge
