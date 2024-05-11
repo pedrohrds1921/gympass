@@ -24,7 +24,7 @@ services:
       - DATABASE_URL=postgres://dbpg:docker@pgsql:5432/pgGympass
       - NODE_ENV=prod
     depends_on:
-      - pgsql
+      - db
 
 networks:
   api_network:
