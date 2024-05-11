@@ -1,17 +1,35 @@
 version: '3'
 
 services:
-  pgGympass:
+  db:
     image: bitnami/postgresql
+    container_name: pgsql
     ports:
       - 5432:5432
+    networks:
+      - db_network
     environment:
-      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_USERNAME=dbpg
       - POSTGRESQL_PASSWORD=docker
       - POSTGRESQL_DATABASE=pgGympass
     volumes:
-      - appDB:/data/appDB
+      - pg_data:/var/lib/postgresql/data
     restart: always
+  api:
+    build: .
+    container_name: api
+    networks:
+      - api_network
+    environment:
+      - DATABASE_URL=postgres://dbpg:docker@pgsql:5432/pgGympass
+      - NODE_ENV=prod
+    depends_on:
+      - pgsql
 
+networks:
+  api_network:
+    driver: bridge
+  db_network:
+    driver: bridge
 volumes:
-  appDB:
+  pg_data:
