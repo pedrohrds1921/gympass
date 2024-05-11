@@ -1,13 +1,7 @@
-version: '3'
-
 services:
   pgsql:
     image: bitnami/postgresql
     container_name: pgsql
-    ports:
-      - 5432:5432
-    networks:
-      - db_network
     environment:
       - POSTGRESQL_USERNAME=dbpg
       - POSTGRESQL_PASSWORD=docker
@@ -15,18 +9,23 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
     restart: always
+    networks:
+      - db_network
+
   api:
     build: .
     container_name: api
     networks:
-      - api_network
       - db_network
+      - api_network
+    ports:
+      - 3333:3333
     depends_on:
       - pgsql
+
 networks:
-  api_network:
-    driver: bridge
   db_network:
-    driver: bridge
+  api_network:
+
 volumes:
   pg_data:
