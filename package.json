@@ -1,0 +1,47 @@
+{
+  "name": "gympass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/server.js",
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build",
+    "test": "vitest run",
+    "test:e2e": "vitest run --dir src/http",
+    "test:e2eW": "vitest  --dir src/http",
+    "test:watch": "vitest --dir src/services",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@rocketseat/eslint-config": "^2.2.2",
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^22.4.0",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^8.57.0",
+    "globals": "^15.9.0",
+    "prisma": "^5.18.0",
+    "supertest": "^7.0.0",
+    "tsup": "^3.7.0",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0",
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^9.4.0",
+    "@fastify/jwt": "^8.0.1",
+    "@prisma/client": "^5.18.0",
+    "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "zod": "^3.23.8"
+  }
+}

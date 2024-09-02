@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  gympassPG:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=GYM
+      - POSTGRESQL_PASSWORD=DOCKER
+      - POSTGRESQL_DATABASE=PROD
