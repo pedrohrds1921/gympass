@@ -7,7 +7,7 @@
     "start": "node build/server.js",
     "dev": "tsx watch src/server.ts",
     "build": "tsup src --out-dir build",
-    "test": "vitest run",
+    "test": "vitest run --dir src/services",
     "test:e2e": "vitest run --dir src/http",
     "test:e2eW": "vitest  --dir src/http",
     "test:watch": "vitest --dir src/services",
